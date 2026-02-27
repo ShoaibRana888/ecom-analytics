@@ -32,7 +32,7 @@ export interface FunnelStage {
 
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
-  private base = 'http://localhost:8000/api';
+  private base = 'https://ecom-api-jkns.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
