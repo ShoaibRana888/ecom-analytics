@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --bg-page:      #f5f7fa;
+  --bg-card:      #ffffff;
+  --text-primary: #1a2035;
+  --text-muted:   #6b7280;
+  --border:       #e5e7eb;
+  --success:      #10b981;
+  --danger:       #ef4444;
+  --chart-1:      #4f46e5;
+  --chart-2:      #06b6d4;
+  --chart-3:      #f59e0b;
+  --chart-4:      #10b981;
+}
+
+.dark-mode {
+  --bg-page:      #0f172a;
+  --bg-card:      #1e293b;
+  --text-primary: #f1f5f9;
+  --text-muted:   #94a3b8;
+  --border:       #334155;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: background .3s, color .3s;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  transition: background .3s;
+}
+
+.text-success { color: var(--success); }
+.text-danger  { color: var(--danger);  }
+.text-muted   { color: var(--text-muted); font-size: 13px; }
+.flex-spacer  { flex: 1; }

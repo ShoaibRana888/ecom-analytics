@@ -1,6 +1,35 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
+import {
+  Chart,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Filler,
+  Tooltip,
+  Legend,
+  DoughnutController,
+  ArcElement,
+  BarController,
+  BarElement,
+} from 'chart.js';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Filler,
+  Tooltip,
+  Legend,
+  DoughnutController,
+  ArcElement,
+  BarController,
+  BarElement,
+);
+
+bootstrapApplication(App, appConfig).catch(err => console.error(err));

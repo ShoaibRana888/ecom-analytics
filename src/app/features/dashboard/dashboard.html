@@ -1,0 +1,132 @@
+<div *ngIf="loading" class="loading-bar">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="card kpi" *ngFor="let card of kpis">
+    <div class="kpi__header">
+      <span class="text-muted">{{ card.label }}</span>
+      <div class="kpi__icon">
+        <mat-icon>{{ card.icon }}</mat-icon>
+      </div>
+    </div>
+    <div class="kpi__value">{{ card.value }}</div>
+    <div class="kpi__change"
+         [class.text-success]="card.change > 0"
+         [class.text-danger]="card.change < 0">
+      <mat-icon>{{ card.change > 0 ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+      {{ card.change | number:'1.1-1' }}% vs last period
+    </div>
+  </div>
+</div>
+
+<!-- Charts Row -->
+<div class="charts-row">
+  <div class="card chart-card chart-card--large">
+    <div class="chart-card__header">
+      <h3>Revenue Over Time</h3>
+      <span class="text-muted">Last 30 days</span>
+    </div>
+    <div class="chart-wrapper">
+      <canvas baseChart
+        [data]="revenueChartData"
+        [options]="revenueChartOptions"
+        type="line">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="card chart-card">
+    <div class="chart-card__header">
+      <h3>Revenue by Category</h3>
+    </div>
+    <div class="chart-wrapper">
+      <canvas baseChart
+        [data]="categoryChartData"
+        [options]="categoryChartOptions"
+        type="doughnut">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Row -->
+<div class="bottom-row">
+
+  <!-- Top Products Table -->
+  <div class="card table-card">
+    <div class="chart-card__header">
+      <h3>Top Products</h3>
+    </div>
+    <table mat-table [dataSource]="topProducts">
+
+      <ng-container matColumnDef="rank">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let p">
+          <span class="rank-badge">{{ p.rank }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Product</th>
+        <td mat-cell *matCellDef="let p"><strong>{{ p.name }}</strong></td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Category</th>
+        <td mat-cell *matCellDef="let p">
+          <mat-chip>{{ p.category }}</mat-chip>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="revenue">
+        <th mat-header-cell *matHeaderCellDef>Revenue</th>
+        <td mat-cell *matCellDef="let p">
+          {{ p.revenue | currency:'USD':'symbol':'1.0-0' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="units">
+        <th mat-header-cell *matHeaderCellDef>Units</th>
+        <td mat-cell *matCellDef="let p">{{ p.units | number }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="trend">
+        <th mat-header-cell *matHeaderCellDef>Trend</th>
+        <td mat-cell *matCellDef="let p"
+            [class.text-success]="p.trend > 0"
+            [class.text-danger]="p.trend < 0">
+          <mat-icon>{{ p.trend > 0 ? 'trending_up' : 'trending_down' }}</mat-icon>
+          {{ p.trend | number:'1.1-1' }}%
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- Acquisition Funnel -->
+  <div class="card funnel-card">
+    <div class="chart-card__header">
+      <h3>Acquisition Funnel</h3>
+      <span class="text-muted">This month</span>
+    </div>
+    <div class="funnel">
+      <div *ngFor="let stage of funnelStages; let i = index" class="funnel__stage">
+        <div class="funnel__label">
+          <span>{{ stage.stage }}</span>
+          <span>{{ stage.count | number }}</span>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="stage.percentage"
+          [color]="i === funnelStages.length - 1 ? 'accent' : 'primary'">
+        </mat-progress-bar>
+        <span class="text-muted">{{ stage.percentage }}%</span>
+      </div>
+    </div>
+  </div>
+
+</div>
