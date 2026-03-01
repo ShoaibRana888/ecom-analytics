@@ -46,7 +46,7 @@ body {
 .text-muted   { color: var(--text-muted); font-size: 13px; }
 .flex-spacer  { flex: 1; }
 
-h1, h2, h3, h4, h5, h6, title {
+h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
@@ -59,5 +59,41 @@ h1, h2, h3, h4, h5, h6, title {
 
   .mat-mdc-table {
     background: var(--bg-card);
+  }
+
+  /* Topbar title and icons */
+  .topbar__title,
+  .mat-toolbar,
+  .mat-toolbar span,
+  .mat-toolbar .topbar__title {
+    color: var(--text-primary) !important;
+  }
+
+  /* Page headings - h2 (Sales Trends, Products, Customer Acquisition) */
+  h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+  }
+
+  /* funnel names and labels */
+  .funnel__name,
+  .funnel__label span,
+  .funnel__pct {
+    color: var(--text-primary) !important;
+  }
+
+  /* Summary card values */
+  .summary-card__value,
+  .kpi__value {
+    color: var(--text-primary) !important;
+  }
+
+  /* Stage Breakdown inline heading */
+  [style*="font-weight: 600"] {
+    color: var(--text-primary);
+  }
+
+  /* Card text */
+  .card {
+    color: var(--text-primary);
   }
 }

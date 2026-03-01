@@ -54,6 +54,12 @@
   background: var(--bg-card);
   border-bottom-color: var(--border);
   color: var(--text-primary);
+
+  .topbar__title,
+  span,
+  button mat-icon {
+    color: var(--text-primary) !important;
+  }
 }
 
 .topbar {

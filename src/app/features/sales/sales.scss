@@ -40,3 +40,19 @@
   .charts-row   { grid-template-columns: 1fr; }
   .page-header  { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
+/* Dark mode overrides */
+:host-context(.dark-mode) {
+  h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+  }
+
+  .page-header h2,
+  .chart-card__header h3,
+  .table-toolbar h3,
+  .funnel__name,
+  .funnel__pct,
+  .summary-card__value,
+  .kpi__value {
+    color: var(--text-primary) !important;
+  }
+}
