@@ -2,7 +2,7 @@
 
 .sidenav {
   width: 240px;
-  background: var(--text-primary);
+  background: var(--bg-sidenav);
   color: #fff;
   border-right: none;
   display: flex;
@@ -15,6 +15,7 @@
     padding: 20px 16px;
     font-size: 18px;
     font-weight: 600;
+    color: #ffffff;
     border-bottom: 1px solid rgba(255,255,255,.1);
 
     .mat-icon {
@@ -41,17 +42,18 @@
     }
   }
 
-  &__footer { padding: 16px; }
+  &__footer { padding: 16px; color: rgba(255,255,255,.4); }
 }
 
 .dark-mode .sidenav {
-  background: #0f172a;
-  border-right: 1px solid #334155;
+  background: var(--bg-sidenav);
+  border-right: 1px solid var(--border);
 }
 
 .dark-mode .topbar {
-  background: #1e293b;
-  border-bottom-color: #334155;
+  background: var(--bg-card);
+  border-bottom-color: var(--border);
+  color: var(--text-primary);
 }
 
 .topbar {

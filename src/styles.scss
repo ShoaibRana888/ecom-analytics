@@ -3,6 +3,7 @@
 :root {
   --bg-page:      #f5f7fa;
   --bg-card:      #ffffff;
+  --bg-sidenav:   #1a2035;
   --text-primary: #1a2035;
   --text-muted:   #6b7280;
   --border:       #e5e7eb;
@@ -15,11 +16,12 @@
 }
 
 .dark-mode {
-  --bg-page:      #0f172a;
-  --bg-card:      #1e293b;
+  --bg-page:      #0a0f1e;
+  --bg-card:      #111827;
+  --bg-sidenav:   #0a0f1e;
   --text-primary: #f1f5f9;
   --text-muted:   #94a3b8;
-  --border:       #334155;
+  --border:       #1f2937;
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -43,3 +45,19 @@ body {
 .text-danger  { color: var(--danger);  }
 .text-muted   { color: var(--text-muted); font-size: 13px; }
 .flex-spacer  { flex: 1; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+.dark-mode {
+  .mat-mdc-cell,
+  .mat-mdc-header-cell {
+    color: var(--text-primary);
+    border-bottom-color: var(--border);
+  }
+
+  .mat-mdc-table {
+    background: var(--bg-card);
+  }
+}
